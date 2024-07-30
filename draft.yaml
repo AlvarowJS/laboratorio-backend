@@ -1,0 +1,20 @@
+models:
+  Examtype:
+    name: string
+    description: string
+    relationships:
+      hasMany: Exam
+
+  Batch:
+    name: string
+    description: string
+    relationships:
+      hasMany: Exam
+
+  Exam:
+    date: date
+    medition: float
+    examtype_id: id
+    batch_id: id               
+
+controllers:

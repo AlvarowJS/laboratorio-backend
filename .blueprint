@@ -1,0 +1,14 @@
+created:
+    - database/factories/ExamtypeFactory.php
+    - database/factories/BatchFactory.php
+    - database/factories/ExamFactory.php
+    - database/migrations/2024_07_30_043635_create_examtypes_table.php
+    - database/migrations/2024_07_30_043636_create_batches_table.php
+    - database/migrations/2024_07_30_043637_create_exams_table.php
+    - app/Models/Examtype.php
+    - app/Models/Batch.php
+    - app/Models/Exam.php
+models:
+    Examtype: { name: string, description: string, relationships: { hasMany: Exam } }
+    Batch: { name: string, description: string, relationships: { hasMany: Exam } }
+    Exam: { date: date, medition: float, examtype_id: id, batch_id: id }
