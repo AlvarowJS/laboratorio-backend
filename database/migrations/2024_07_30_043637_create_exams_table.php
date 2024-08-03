@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('date');
             $table->float('medition');
             $table->foreignId('examtype_id')->nullable()->constrained('examtypes');
-            $table->foreignId('batche_id')->nullable()->constrained('batches');
+            $table->foreignId('lot_id')->nullable()->constrained('lots');
             $table->timestamps();
         });
     }

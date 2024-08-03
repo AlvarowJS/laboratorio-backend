@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Models\Examtype;
 use Illuminate\Http\Request;
 
 class ExamtypeController extends Controller
@@ -12,7 +13,8 @@ class ExamtypeController extends Controller
      */
     public function index()
     {
-        //
+        $examtype = Examtype::all();
+        return response()->json($examtype);
     }
 
     /**
@@ -20,7 +22,11 @@ class ExamtypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Examtype();
+        $data->name = $request->name;
+        $data->description = $request->description;
+        $data->save();
+        return response()->json($data);
     }
 
     /**
@@ -28,7 +34,8 @@ class ExamtypeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $batch = Examtype::find($id);
+        return response()->json($batch);
     }
 
     /**
@@ -36,7 +43,12 @@ class ExamtypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = Examtype::find($id);
+        $data->name = $request->name;
+        $data->description = $request->description;
+        $data->save();
+        return response()->json($data);
+        
     }
 
     /**
@@ -44,6 +56,11 @@ class ExamtypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = Examtype::find($id);
+        if (!$data) {
+            return response()->json(['message' => 'Registro no encontrado'], 404);
+        }
+        $data->delete();
+        return response()->json(['message' => 'Registro eliminado']);
     }
 }

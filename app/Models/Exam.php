@@ -19,7 +19,7 @@ class Exam extends Model
         'date',
         'medition',
         'examtype_id',
-        'batch_id',
+        'lot_id'
     ];
 
     /**
@@ -29,10 +29,10 @@ class Exam extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'date' => 'date',
+        // 'date' => 'date',
         'medition' => 'float',
         'examtype_id' => 'integer',
-        'batch_id' => 'integer',
+        'lot_id' => 'integer',
     ];
 
     public function examtype(): BelongsTo
@@ -40,8 +40,8 @@ class Exam extends Model
         return $this->belongsTo(Examtype::class);
     }
 
-    public function batch(): BelongsTo
+    public function lot(): BelongsTo
     {
-        return $this->belongsTo(Batch::class);
+        return $this->belongsTo(Lot::class);
     }
 }
